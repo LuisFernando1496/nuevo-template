@@ -29,9 +29,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private authService: AuthService
   ) {
-    this.authService.getUser().then((user) => {
-      this.currentUser = user;
-    });
+    // this.authService.getUser().then((user) => {
+    //   this.currentUser = user;
+    // });
 
     this.subscription = this.sidebarService.getSidebar().subscribe(
       (res) => {

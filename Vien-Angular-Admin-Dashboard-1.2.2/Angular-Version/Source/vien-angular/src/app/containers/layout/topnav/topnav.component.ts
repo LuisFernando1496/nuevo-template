@@ -6,13 +6,14 @@ import { LangService, Language } from 'src/app/shared/lang.service';
 import { AuthService } from 'src/app/shared/auth.service';
 import { environment } from 'src/environments/environment';
 import { getThemeColor, setThemeColor } from 'src/app/utils/util';
+import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-topnav',
   templateUrl: './topnav.component.html',
 })
 export class TopnavComponent implements OnInit, OnDestroy {
-  buyUrl = environment.buyUrl;
+  // buyUrl = environment.buyUrl;
   adminRoot = environment.adminRoot;
   sidebar: ISidebar;
   subscription: Subscription;
@@ -23,6 +24,7 @@ export class TopnavComponent implements OnInit, OnDestroy {
   isFullScreen = false;
   isDarkModeActive = false;
   searchKey = '';
+  urlImgProfile = '';
 
   constructor(
     private sidebarService: SidebarService,
@@ -72,10 +74,9 @@ export class TopnavComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit(): Promise<void> {
-    if (await this.authService.getUser()) {
-      this.displayName = await this.authService.getUser().then((user) => {
-        return user.displayName;
-      });
+    this.checkRol()
+    if (localStorage.getItem('username')) {
+      this.displayName = localStorage.getItem('username');
     }
     this.subscription = this.sidebarService.getSidebar().subscribe(
       (res) => {
@@ -85,6 +86,20 @@ export class TopnavComponent implements OnInit, OnDestroy {
         console.error(`An error occurred: ${err.message}`);
       }
     );
+  }
+
+  checkRol() {
+    switch (localStorage.getItem('rol_id')) {
+      case "1":
+        this.urlImgProfile = "/assets/img/profiles/director-profile.png"
+        break;
+      case "2":
+        this.urlImgProfile = "/assets/img/profiles/teacher-profile.png"
+        break;
+      default:
+        this.urlImgProfile = "/assets/img/profiles/student-profile.png"
+        break;
+    }
   }
 
   ngOnDestroy(): void {
@@ -124,9 +139,22 @@ export class TopnavComponent implements OnInit, OnDestroy {
   }
 
   onSignOut(): void {
-    this.authService.signOut().subscribe(() => {
-      this.router.navigate(['/']);
-    });
+    let user_id = {
+      'user_id': localStorage.getItem("currentUserID")
+    }
+    this.authService.signOut(user_id).pipe(timeout(10000)).subscribe(
+      (response) => {
+        if (response['status_code'] == 200) {
+          localStorage.clear()
+          this.router.navigate(['user/login']);
+        } else {
+          console.log(response);
+        }
+      },
+      (error) => {
+        console.log(JSON.stringify(error));
+      }
+    )
   }
 
   searchKeyUp(event: KeyboardEvent): void {

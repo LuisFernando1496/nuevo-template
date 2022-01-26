@@ -40,8 +40,8 @@
       </ul>
     </div>
 
-    <a class="btn btn-sm btn-outline-primary ml-2 d-none d-xl-inline-block" [href]="buyUrl"
-      target="_blank">&nbsp;BUY&nbsp;</a>
+    <!-- <a class="btn btn-sm btn-outline-primary ml-2 d-none d-xl-inline-block" [href]="buyUrl"
+      target="_blank">&nbsp;BUY&nbsp;</a> -->
   </div>
 
   <a class="navbar-logo" [routerLink]="adminRoot" >
@@ -52,15 +52,15 @@
   <div class="navbar-right">
     <div class="header-icons d-inline-block align-middle">
 
-      <div class="d-none d-md-inline-block align-text-bottom mr-1">
+      <!-- <div class="d-none d-md-inline-block align-text-bottom mr-1">
         <div class="custom-control custom-switch" tooltip="Dark Mode" placement="left">
           <input type="checkbox" class="custom-control-input" id="darkModeSwitch" [checked]="isDarkModeActive"
             (change)="onDarkModeChange($event)">
           <label class="custom-control-label" for="darkModeSwitch"></label>
         </div>
-      </div>
+      </div> -->
 
-      <div class="position-relative d-none d-sm-inline-block">
+      <!-- <div class="position-relative d-none d-sm-inline-block">
         <div dropdown>
           <button dropdownToggle type="button" class="header-icon btn btn-empty">
             <i class="simple-icon-grid"></i>
@@ -98,9 +98,9 @@
             </a>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="position-relative d-inline-block">
+      <!-- <div class="position-relative d-inline-block">
 
         <div dropdown>
           <button id="button-basic" dropdownToggle type="button" id="notificationButton"
@@ -163,13 +163,13 @@
             </perfect-scrollbar>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <button class="header-icon btn btn-empty d-none d-sm-inline-block" type="button" id="fullScreenButton"
+      <!-- <button class="header-icon btn btn-empty d-none d-sm-inline-block" type="button" id="fullScreenButton"
         (click)="fullScreenClick()">
         <i *ngIf="!isFullScreen" class="simple-icon-size-fullscreen"></i>
         <i *ngIf="isFullScreen" class="simple-icon-size-actual"></i>
-      </button>
+      </button> -->
 
     </div>
 
@@ -177,15 +177,12 @@
       <button class="btn btn-empty p-0" type="button" dropdownToggle>
         <span class="name">{{displayName}}</span>
         <span>
-          <img alt="Profile Picture" src="/assets/img/profiles/l-1.jpg" />
+          <img alt="Profile Picture" [src]="urlImgProfile" />
         </span>
       </button>
 
       <div class="dropdown-menu dropdown-menu-right mt-3" *dropdownMenu role="menu">
         <a class="dropdown-item c-pointer">Account</a>
-        <a class="dropdown-item c-pointer">Features</a>
-        <a class="dropdown-item c-pointer">History</a>
-        <a class="dropdown-item c-pointer">Support</a>
         <li class="divider dropdown-divider"></li>
         <a class="dropdown-item c-pointer" (click)="onSignOut()">Sign out</a>
       </div>

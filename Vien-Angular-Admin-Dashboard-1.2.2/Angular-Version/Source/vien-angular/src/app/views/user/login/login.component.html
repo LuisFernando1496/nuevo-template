@@ -15,9 +15,9 @@
 
     <form #loginForm="ngForm" novalidate (ngSubmit)="onSubmit()">
       <label class="form-group has-float-label">
-        <input class="form-control" required email ngModel #email="ngModel" name="email" [(ngModel)]="emailModel" />
+        <input class="form-control" required nickName ngModel #nickName="ngModel" name="username" [(ngModel)]="nickNameModel" />
         <span>{{ 'user.email' | translate }}</span>
-        <div *ngIf="!email.valid && loginForm.submitted" class="invalid-tooltip">Email is required!</div>
+        <div *ngIf="loginForm.submitted" class="invalid-tooltip">nickName is required!</div>
       </label>
       <label class="form-group has-float-label">
         <input class="form-control" type="password" placeholder="" required ngModel #password="ngModel" name="password"

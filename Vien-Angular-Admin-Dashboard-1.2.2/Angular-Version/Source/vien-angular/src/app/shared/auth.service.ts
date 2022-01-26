@@ -1,8 +1,9 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { from } from 'rxjs';
 
 import { getUserRole } from 'src/app/utils/util';
+import { environment } from 'src/environments/environment';
 
 export interface ISignInCredentials {
   email: string;
@@ -22,51 +23,64 @@ export interface IPasswordReset {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  constructor(private auth: AngularFireAuth) {}
+
+  url = environment.apiUrl;
+
+  headersWithoutToken = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+
+  headersWithToken = {
+    headers: new HttpHeaders({
+      Authorization: localStorage.getItem('token')
+    })
+  };
+
+  constructor(protected http: HttpClient) { }
 
   // tslint:disable-next-line:typedef
   signIn(credentials: ISignInCredentials) {
-    return this.auth
-      .signInWithEmailAndPassword(credentials.email, credentials.password)
-      .then(({ user }) => {
-        return user;
-      });
+    return this.http.post(this.url + "login", credentials, this.headersWithoutToken);
+    // .signInWithEmailAndPassword(credentials.email, credentials.password)
+    // .then(({ user }) => {
+    //   return user;
+    // });
   }
 
-  signOut = () => from(this.auth.signOut());
+  signOut(id) {
+    return this.http.post(this.url + "logout", id, this.headersWithToken)
+  }
 
   // tslint:disable-next-line:typedef
   register(credentials: ICreateCredentials) {
-    return this.auth
-      .createUserWithEmailAndPassword(credentials.email, credentials.password)
-      .then(async ({ user }) => {
-        user.updateProfile({
-          displayName: credentials.displayName,
-        });
-        this.auth.updateCurrentUser(user);
-        return user;
-      });
+    return this.http.post(this.url + "register", credentials, this.headersWithoutToken);
+    // .createUserWithEmailAndPassword(credentials.email, credentials.password)
+    // .then(async ({ user }) => {
+    //   user.updateProfile({
+    //     displayName: credentials.displayName,
+    //   });
+    //   this.auth.updateCurrentUser(user);
+    //   return user;
+    // });
   }
 
   // tslint:disable-next-line:typedef
   sendPasswordEmail(email) {
-    return this.auth.sendPasswordResetEmail(email).then(() => {
-      return true;
-    });
+    return this.http.post(this.url + "send/password", email, this.headersWithoutToken);
   }
 
   // tslint:disable-next-line:typedef
   resetPassword(credentials: IPasswordReset) {
-    return this.auth
-      .confirmPasswordReset(credentials.code, credentials.newPassword)
-      .then((data) => {
-        return data;
-      });
+    return this.http.post(this.url + "reset/Password", credentials, this.headersWithoutToken);
   }
 
   // tslint:disable-next-line:typedef
-  async getUser() {
-    const u = await this.auth.currentUser;
-    return { ...u, role: getUserRole() };
-  }
+  // getUser() {
+  //   const u = {
+  //     displayName: localStorage.getItem("username")
+  //   };
+  //   return { ...u, role: getUserRole() };
+  // }
 }
