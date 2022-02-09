@@ -11,7 +11,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeadroomModule } from '@ctrl/ngx-headroom';
 import { HomeComponent } from './home/home.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
-import { AuthGuard } from '../shared/auth.guard';
 @NgModule({
   declarations: [HomeComponent],
   imports: [
@@ -26,6 +25,6 @@ import { AuthGuard } from '../shared/auth.guard';
     HeadroomModule,
     ScrollToModule.forRoot(),
   ],
-  providers: [AuthGuard],
+  providers: [],
 })
 export class ViewsModule {}

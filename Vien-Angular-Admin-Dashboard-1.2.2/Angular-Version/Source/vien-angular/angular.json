@@ -19,7 +19,7 @@
           "options": {
             "allowedCommonJsDependencies": [
               "lodash"
-           ],
+            ],
             "outputPath": "dist/vien-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -236,5 +236,8 @@
       }
     }
   },
-  "defaultProject": "vien-angular"
+  "defaultProject": "vien-angular",
+  "cli": {
+    "analytics": false
+  }
 }

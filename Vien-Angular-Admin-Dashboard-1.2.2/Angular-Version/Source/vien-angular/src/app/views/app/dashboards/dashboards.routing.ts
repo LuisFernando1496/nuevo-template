@@ -5,6 +5,7 @@ import { DefaultComponent } from './default/default.component';
 import { ContentComponent } from './content/content.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { EcommerceComponent } from './ecommerce/ecommerce.component';
+import { TokenGuard } from 'src/app/guards/token.guard';
 import { UserRole } from 'src/app/shared/auth.roles';
 
 const routes: Routes = [
@@ -16,21 +17,25 @@ const routes: Routes = [
       {
         path: 'default',
         component: DefaultComponent,
+        canActivate: [TokenGuard]
         // data: { roles: [UserRole.Admin] },
       },
       {
         path: 'content',
         component: ContentComponent,
+        // canActivate: [TokenGuard]
         // data: { roles: [UserRole.Admin] },
       },
       {
         path: 'analytics',
         component: AnalyticsComponent,
+        // canActivate: [TokenGuard]
         // data: { roles: [UserRole.Admin, UserRole.Editor] },
       },
       {
         path: 'ecommerce',
         component: EcommerceComponent,
+        // canActivate: [TokenGuard]
         // data: { roles: [UserRole.Editor] },
       },
     ],
@@ -41,4 +46,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardsRoutingModule {}
+export class DashboardsRoutingModule { }
