@@ -16,7 +16,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'default', pathMatch: 'full' },
       {
         path: 'default',
-        // component: DefaultComponent,
+        component: DefaultComponent,
         canActivate: [TokenGuard]
         // data: { roles: [UserRole.Admin] },
       },
