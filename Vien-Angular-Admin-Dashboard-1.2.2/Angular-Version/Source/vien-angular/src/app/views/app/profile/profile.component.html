@@ -1,0 +1,138 @@
+<div class="row">
+  <div class="col-12">
+    <div>
+      <h1>{{user.name}} {{user.last_name}}</h1>
+      <div class="text-zero top-right-button-container">
+        <div dropdown>
+          <button id="button-basic" dropdownToggle type="button" placement="bottom right"
+            class="btn btn-outline-primary dropdown-toggle btn-lg" aria-controls="dropdown-basic">{{ 'pages.actions' | translate }} <span
+              class="caret"></span>
+          </button>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+            aria-labelledby="button-basic">
+            <li role="menuitem"><a class="dropdown-item" href="javascript:;">{{ 'pages.action' | translate }}</a></li>
+            <li role="menuitem"><a class="dropdown-item"
+                href="javascript:;">{{ 'pages.another-action' | translate }}</a></li>
+          </ul>
+        </div>
+      </div>
+      <app-breadcrumb></app-breadcrumb>
+    </div>
+
+
+    <div>
+      <tabset class="separator-tabs">
+        <tab heading="{{'pages.profile' | translate | uppercase }}">
+          <div class="row">
+            <div class="col-12 mb-5">
+              <img class="social-header card-img" src="/assets/img/social/header.jpg" />
+            </div>
+            <div class="col-12 col-lg-5 col-xl-4 col-left">
+              <img alt="Profile" src="/assets/img/profiles/l-1.jpg" class="img-thumbnail card-img social-profile-img c-pointer">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <div class="text-center pt-4">
+                    <p class="list-item-heading pt-2">{{user.name}} {{user.last_name}}</p>
+                  </div>
+                  <div class="text-left pt-4">
+                    <p class="list-item-heading pt-1">{{user.username}}</p>
+                    <p class="list-item-heading pt-1">{{user.email}}</p>
+                    <p class="text-muted text-small mb-2">{{'pages.location' | translate}}</p>
+                    <p class="mb-3">{{user.city}}, {{user.state}}, {{user.country}} </p>
+                  </div>
+                  <p *ngIf="docente" class="text-muted text-small mb-2">Grupos</p>
+                  <p *ngIf="estudiante" class="text-muted text-small mb-2">Grupo</p>
+                  <p *ngIf="administrativo" class="text-muted text-small mb-2">Permisos</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-7 col-xl-8 col-right">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Datos</h3>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card mb-4">
+                        <div class="card-body">
+                          <form>
+                            <label class="form-group has-float-label">
+                              <input type="text" class="form-control">
+                              <span>Nombre(s)</span>
+                            </label>
+                            <label class="form-group has-float-label">
+                              <input type="text" class="form-control">
+                              <span>Apellidos</span>
+                            </label>
+                            <label class="form-group has-float-label">
+                              <input type="text" class="form-control">
+                              <span>Username</span>
+                            </label>
+                            <label class="form-group has-float-label">
+                              <input type="text" class="form-control">
+                              <span>Correo</span>
+                            </label>
+                            <label class="form-group has-float-label">
+                              <input type="password" class="form-control">
+                              <span>Password</span>
+                            </label>
+                            <label class="form-group has-float-label">
+                              <input type="password" class="form-control">
+                              <span>Confirm Password</span>
+                            </label>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="card mb-4" *ngIf="docente">
+                        <div class="card-body">
+                          <form>
+                            <label class="form-group has-float-label">
+                              <input type="text" class="form-control">
+                              <span>RFC</span>
+                            </label>
+                            <label class="form-group has-float-label">
+                              <input type="text" class="form-control">
+                              <span>CURP</span>
+                            </label>
+                            <label class="form-group has-float-label">
+                              <ng-select [items]="[{id:0, name:'Feminino'}, {id:1, name:'Masculino'}, {id:2, name:'Otro'}]" bindLabel="name" bindValue="id">
+                              </ng-select>
+                              <span>Genero</span>
+                            </label>
+                            <label class="form-group has-float-label">
+                              <input type="text" class="form-control">
+                              <span>Cedula</span>
+                            </label>
+                            <label class="form-group has-float-label">
+                              <input type="text" class="form-control">
+                              <span>Banco</span>
+                            </label>
+                            <label class="form-group has-float-label">
+                              <input type="text" class="form-control">
+                              <span>CLABE</span>
+                            </label>
+                            <label class="form-group has-float-label">
+                              <input type="text" class="form-control">
+                              <span>No. Cuenta</span>
+                            </label>
+                            <label class="form-group has-float-label">
+                              <input class="form-control" bsDatepicker [container]="'html'">
+                              <span>Fecha Nacimiento</span>
+                            </label>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </tab>
+        <tab heading="GRUPOS">
+
+        </tab>
+      </tabset>
+    </div>
+
+  </div>
+</div>

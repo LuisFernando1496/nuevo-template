@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BlankPageComponent } from './blank-page/blank-page.component';
+import { GroupsComponent } from './groups/groups.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -16,6 +18,11 @@ const routes: Routes = [
             (m) => m.DashboardsModule
           ),
       },
+      {
+        path: 'grupos',
+        component: GroupsComponent
+      },
+      { path: 'perfil', component: ProfileComponent },
       {
         path: 'applications',
         loadChildren: () =>

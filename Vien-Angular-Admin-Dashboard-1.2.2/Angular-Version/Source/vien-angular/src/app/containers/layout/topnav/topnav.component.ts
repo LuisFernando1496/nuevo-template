@@ -214,4 +214,9 @@ export class TopnavComponent implements OnInit, OnDestroy {
     }
     this.searchKey = '';
   }
+
+  perfil()
+  {
+    this.router.navigate(['app/perfil']);
+  }
 }
