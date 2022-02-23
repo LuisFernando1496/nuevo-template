@@ -14,6 +14,11 @@ export interface IMenuItem {
 
 const data: IMenuItem[] = [
   {
+    icon: 'simple-icon-people',
+    label: 'Grupos',
+    to: `${adminRoot}/grupos`
+  },
+  {
     icon: 'iconsminds-shop-4',
     label: 'menu.dashboards',
     to: `${adminRoot}/dashboards`,

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 
 import { getUserRole } from 'src/app/utils/util';
 import { environment } from 'src/environments/environment';
@@ -49,8 +49,33 @@ export class AuthService {
     // });
   }
 
+  principal(ruta:string):Observable<any>
+  {
+    return this.http.get<any>(this.url + ruta, this.headersWithToken);
+  }
+
+  store(ruta:string,form:any):Observable<any>
+  {
+    return this.http.post<any>(this.url + ruta,form,this.headersWithToken);
+  }
+
+  update(ruta:string,id:any,form:any):Observable<any>
+  {
+    return this.http.put<any>(this.url + ruta + id,form,this.headersWithToken);
+  }
+
+  destroy(ruta:string,id:any):Observable<any>
+  {
+    return this.http.delete<any>(this.url + ruta + id,this.headersWithToken);
+  }
+
   signOut(id) {
     return this.http.post(this.url + "logout", id, this.headersWithToken)
+  }
+
+  updateProfile(ruta:string, form:any):Observable<any>
+  {
+    return this.http.put<any>(this.url + ruta, form, this.headersWithToken);
   }
 
   // tslint:disable-next-line:typedef
