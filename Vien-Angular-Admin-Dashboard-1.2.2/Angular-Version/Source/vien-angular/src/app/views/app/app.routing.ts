@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BlankPageComponent } from './blank-page/blank-page.component';
 import { GroupsComponent } from './groups/groups.component';
+import { GrupoSelectComponent } from './grupo-select/grupo-select.component';
 import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'grupos',
         component: GroupsComponent
+      },
+      {
+        path: 'grupo/:id',
+        component: GrupoSelectComponent
       },
       { path: 'perfil', component: ProfileComponent },
       {

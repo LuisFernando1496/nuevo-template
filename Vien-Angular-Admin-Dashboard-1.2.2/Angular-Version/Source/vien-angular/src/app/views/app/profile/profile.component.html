@@ -3,18 +3,8 @@
     <div>
       <h1>{{user.name}} {{user.last_name}}</h1>
       <div class="text-zero top-right-button-container">
-        <div dropdown>
-          <button id="button-basic" dropdownToggle type="button" placement="bottom right"
-            class="btn btn-outline-primary dropdown-toggle btn-lg" aria-controls="dropdown-basic">{{ 'pages.actions' | translate }} <span
-              class="caret"></span>
-          </button>
-          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
-            aria-labelledby="button-basic">
-            <li role="menuitem"><a class="dropdown-item" href="javascript:;">{{ 'pages.action' | translate }}</a></li>
-            <li role="menuitem"><a class="dropdown-item"
-                href="javascript:;">{{ 'pages.another-action' | translate }}</a></li>
-          </ul>
-        </div>
+        <button class="btn btn-outline-primary" type="button" (click)="edicionF()" *ngIf="!edicion">Edicion</button>
+
       </div>
       <app-breadcrumb></app-breadcrumb>
     </div>
@@ -54,29 +44,29 @@
                     <div class="col-12">
                       <div class="card mb-4">
                         <div class="card-body">
-                          <form>
+                          <form #userForm="ngForm" novalidate>
                             <label class="form-group has-float-label">
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" name #name="ngModel" name="name" [(ngModel)]="nameModel">
                               <span>Nombre(s)</span>
                             </label>
                             <label class="form-group has-float-label">
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" lastName #lastName="ngModel" name="lastName" [ngModel]="lastNameModel">
                               <span>Apellidos</span>
                             </label>
                             <label class="form-group has-float-label">
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" username #username="ngModel" name="username" [(ngModel)]="usernameModel">
                               <span>Username</span>
                             </label>
                             <label class="form-group has-float-label">
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" email #email="ngModel" name="email" [(ngModel)]="emailModel">
                               <span>Correo</span>
                             </label>
                             <label class="form-group has-float-label">
-                              <input type="password" class="form-control">
+                              <input type="password" class="form-control" password #password="ngModel" name="password" [(ngModel)]="passwordModel">
                               <span>Password</span>
                             </label>
                             <label class="form-group has-float-label">
-                              <input type="password" class="form-control">
+                              <input type="password" class="form-control" confirmPassword #confirmPassword="ngModel" name="confirmPassword" [(ngModel)]="confirmPasswordModel">
                               <span>Confirm Password</span>
                             </label>
                           </form>
@@ -84,43 +74,47 @@
                       </div>
                       <div class="card mb-4" *ngIf="docente">
                         <div class="card-body">
-                          <form>
+                          <form #docenteForm="ngForm">
                             <label class="form-group has-float-label">
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" rfc #rfc="ngModel" name="rfc" [(ngModel)]="rfcModel">
                               <span>RFC</span>
                             </label>
                             <label class="form-group has-float-label">
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" curp #curp="ngModel" name="curp" [(ngModel)]="curpModel">
                               <span>CURP</span>
                             </label>
                             <label class="form-group has-float-label">
-                              <ng-select [items]="[{id:0, name:'Feminino'}, {id:1, name:'Masculino'}, {id:2, name:'Otro'}]" bindLabel="name" bindValue="id">
+                              <ng-select gender #gender="ngModel" name="gender" [(ngModel)]="genderModel" [items]="[{id:0, name:'Feminino'}, {id:1, name:'Masculino'}, {id:2, name:'Otro'}]" bindLabel="name" bindValue="id">
                               </ng-select>
                               <span>Genero</span>
                             </label>
                             <label class="form-group has-float-label">
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" cedula #cedula="ngModel" name="cedula" [(ngModel)]="cedulaModel">
                               <span>Cedula</span>
                             </label>
                             <label class="form-group has-float-label">
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" bank #bank="ngModel" name="bank" [(ngModel)]="bankModel">
                               <span>Banco</span>
                             </label>
                             <label class="form-group has-float-label">
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" clabe #clabe="ngModel" name="clabe" [(ngModel)]="clabeModel">
                               <span>CLABE</span>
                             </label>
                             <label class="form-group has-float-label">
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" account #account="ngModel" name="account" [(ngModel)]="accountModel">
                               <span>No. Cuenta</span>
                             </label>
                             <label class="form-group has-float-label">
-                              <input class="form-control" bsDatepicker [container]="'html'">
+                              <input class="form-control" bsDatepicker [container]="'html'" date #date="ngModel" name="date" [(ngModel)]="dateModel">
                               <span>Fecha Nacimiento</span>
                             </label>
                           </form>
                         </div>
                       </div>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-outline-primary" type="button" *ngIf="edicion">Actualizar</button>
+                      <button class="btn btn-outline-danger" type="button" *ngIf="edicion" (click)="edicionF()">Cancelar</button>
                     </div>
                   </div>
                 </div>

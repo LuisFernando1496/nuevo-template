@@ -73,6 +73,11 @@ export class AuthService {
     return this.http.post(this.url + "logout", id, this.headersWithToken)
   }
 
+  updateProfile(ruta:string, form:any):Observable<any>
+  {
+    return this.http.put<any>(this.url + ruta, form, this.headersWithToken);
+  }
+
   // tslint:disable-next-line:typedef
   register(credentials: ICreateCredentials) {
     return this.http.post(this.url + "register", credentials, this.headersWithoutToken);
