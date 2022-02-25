@@ -14,6 +14,11 @@ export interface IMenuItem {
 
 const data: IMenuItem[] = [
   {
+    icon: 'iconsminds-notepad',
+    label: 'Cursos',
+    to: `${adminRoot}/cursos`
+  },
+  {
     icon: 'simple-icon-people',
     label: 'Grupos',
     to: `${adminRoot}/grupos`

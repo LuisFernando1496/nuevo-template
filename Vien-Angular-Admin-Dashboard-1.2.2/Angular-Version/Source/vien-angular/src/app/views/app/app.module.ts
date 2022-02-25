@@ -17,10 +17,11 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormValidationsContainersModule } from 'src/app/containers/form-validations/form.validations.containers.module';
 import { FormsContainersModule } from 'src/app/containers/forms/forms.containers.module';
 import { GrupoSelectComponent } from './grupo-select/grupo-select.component';
+import { CoursesComponent } from './courses/courses.component';
 
 
 @NgModule({
-  declarations: [BlankPageComponent, AppComponent, GroupsComponent, ProfileComponent, GrupoSelectComponent],
+  declarations: [BlankPageComponent, AppComponent, GroupsComponent, ProfileComponent, GrupoSelectComponent, CoursesComponent],
   imports: [
     CommonModule,
     AppRoutingModule,
