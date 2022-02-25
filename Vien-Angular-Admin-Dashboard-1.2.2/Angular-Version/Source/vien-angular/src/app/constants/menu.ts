@@ -24,6 +24,16 @@ const data: IMenuItem[] = [
     to: `${adminRoot}/grupos`
   },
   {
+    icon: 'simple-icon-people',
+    label: 'Docentes',
+    to: `${adminRoot}/docentes`
+  },
+  {
+    icon: 'simple-icon-people',
+    label: 'Alumnos',
+    to: `${adminRoot}/estudiantes`
+  },
+  {
     icon: 'iconsminds-shop-4',
     label: 'menu.dashboards',
     to: `${adminRoot}/dashboards`,
