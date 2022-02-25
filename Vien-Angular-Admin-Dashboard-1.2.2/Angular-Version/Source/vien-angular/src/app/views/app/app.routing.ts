@@ -29,7 +29,7 @@ const routes: Routes = [
         path: 'docentes',
         component: TeachersComponent
       },
-      {
+      { 
         path: 'estudiantes',
         component: StudentsComponent
       },
