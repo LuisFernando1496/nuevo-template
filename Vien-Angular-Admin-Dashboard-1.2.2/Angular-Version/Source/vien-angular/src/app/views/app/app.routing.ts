@@ -5,6 +5,8 @@ import { BlankPageComponent } from './blank-page/blank-page.component';
 import { GroupsComponent } from './groups/groups.component';
 import { GrupoSelectComponent } from './grupo-select/grupo-select.component';
 import { ProfileComponent } from './profile/profile.component';
+import { StudentsComponent } from './students/students.component';
+import { TeachersComponent } from './teachers/teachers.component';
 
 const routes: Routes = [
   {
@@ -22,6 +24,14 @@ const routes: Routes = [
       {
         path: 'grupos',
         component: GroupsComponent
+      },
+      {
+        path: 'docentes',
+        component: TeachersComponent
+      },
+      {
+        path: 'estudiantes',
+        component: StudentsComponent
       },
       {
         path: 'grupo/:id',
