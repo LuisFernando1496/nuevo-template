@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BlankPageComponent } from './blank-page/blank-page.component';
+import { CoursesComponent } from './courses/courses.component';
 import { GroupsComponent } from './groups/groups.component';
 import { GrupoSelectComponent } from './grupo-select/grupo-select.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -20,6 +21,10 @@ const routes: Routes = [
           import('./dashboards/dashboards.module').then(
             (m) => m.DashboardsModule
           ),
+      },
+      {
+        path: 'cursos',
+        component: CoursesComponent
       },
       {
         path: 'grupos',

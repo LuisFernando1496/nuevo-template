@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-12">
+    <app-heading></app-heading>
+    <app-breadcrumb></app-breadcrumb>
+    <div class="text-zero top-right-button-container">
+      <button class="btn btn-outline-primary" (click)="openModal(template)">Crear</button>
+    </div>
+    <div class="separator mb-5"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="card mb-4">
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Curso</th>
+              <th>Niveles</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <form>
+      <div class="row">
+        <div class="col">
+          <div class="card mb-4">
+            <div class="card-body">
+              <form>
+                <label class="form-group has-float-label">
+                  <input type="text" class="form-control">
+                  <span>Nombre</span>
+                </label>
+                <div class="form-group has-float-label">
+                  <label><span>Niveles</span></label>
+                  <ng-select levels #levels="ngModel" name="levels" [items]="companies" [addTag]="addTagFn" [hideSelected]="true" multiple="true" bindLabel="name" [(ngModel)]="levels"></ng-select>
+                </div>
+                <button class="btn btn-outline-primary" (click)="guardar()">Guardar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Crear Curso</h4>
+    <button class="close pull-right" type="button" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+  </div>
+</ng-template>
