@@ -37,8 +37,6 @@
                   <span>Nombre</span>
                 </label>
                 <div class="form-group has-float-label">
-                  <label><span>Niveles</span></label>
-                  <ng-select levels #levels="ngModel" name="levels" [items]="companies" [addTag]="addTagFn" [hideSelected]="true" multiple="true" bindLabel="name" [(ngModel)]="levels"></ng-select>
                 </div>
                 <button class="btn btn-outline-primary" (click)="guardar()">Guardar</button>
               </form>
